@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apex Approval System</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+    <h1>Apex Approval System</h1>
+    <p class="subtitle">Faculty Proposal Submission</p>
+</header>
+
+<main class="container">
+    <form id="formSubmit">
+        <label>Faculty Name</label>
+        <input type="text" id="facultyName" required />
+
+        <label>Faculty ID</label>
+        <input type="text" id="facultyId" required />
+
+        <label>Department / Club</label>
+        <input type="text" id="departmentOrClub" required />
+
+        <label>Subject</label>
+        <input type="text" id="subject" required />
+
+        <label>Description</label>
+        <textarea id="description" required></textarea>
+
+        <label>Financial Requirement (₹)</label>
+        <input type="number" id="amountRequired" placeholder="0 if none" />
+
+        <label>Expected Outcome</label>
+        <textarea id="expectedOutcome"></textarea>
+
+        <button type="submit">Submit Form</button>
+    </form>
+
+    <div id="response" class="response"></div>
+</main>
+
+<footer>
+    <p>© 2025 BIT Apex Approval System</p>
+</footer>
+
+<script src="api.js"></script>
+<script src="script.js"</script>
+</body>
+</html>

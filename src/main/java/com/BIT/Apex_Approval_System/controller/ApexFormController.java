@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/forms")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:5500", "null"}, allowCredentials = "true", allowedHeaders = "*")
 public class ApexFormController {
 
     private final ApexFormService service;

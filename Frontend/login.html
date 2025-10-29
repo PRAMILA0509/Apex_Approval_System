@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Login</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+          font-family: 'Segoe UI', sans-serif;
+        }
+
+        .login-card {
+          background: white;
+          padding: 2.5em;
+          border-radius: 12px;
+          box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+          width: 360px;
+          animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-card h2 {
+          text-align: center;
+          color: #1e3a8a;
+          margin-bottom: 1em;
+          font-weight: 700;
+        }
+
+        .login-card label {
+          font-weight: bold;
+          margin-top: 1em;
+          display: block;
+          color: #1e293b;
+        }
+
+        .login-card input {
+          width: 100%;
+          padding: 0.7em;
+          margin-top: 0.4em;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          font-size: 1em;
+          outline: none;
+          transition: border 0.2s ease;
+        }
+
+        .login-card input:focus {
+          border-color: #2563eb;
+        }
+
+        .login-card button {
+          width: 100%;
+          background: #1e3a8a;
+          color: white;
+          border: none;
+          padding: 0.8em;
+          margin-top: 1.2em;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 1em;
+          transition: all 0.2s ease;
+        }
+
+        .login-card button:hover {
+          background: #2c5282;
+          transform: translateY(-1px);
+        }
+
+        .error {
+          color: #dc2626;
+          text-align: center;
+          margin-top: 1em;
+          display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div class="login-card">
+    <h2>BIT Apex System</h2>
+    <form id="loginForm" autocomplete="on">
+        <label>Email / Username</label>
+        <input type="text" id="username" autocomplete="username" required />
+
+        <label>Password</label>
+        <input type="password" id="password" autocomplete="current-password" required />
+
+        <button type="submit">Login</button>
+        <p id="error" class="error">Invalid credentials!</p>
+    </form>
+</div>
+
+<!-- JS connections -->
+<script src="api.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apex Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+    <h1>Approval Dashboard</h1>
+    <p class="subtitle">Manage Submitted Forms</p>
+</header>
+
+<main class="container">
+    <table id="formsTable">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Faculty</th>
+            <th>Subject</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</main>
+
+<footer>
+    <p>© 2025 BIT Apex Approval System</p>
+</footer>
+
+<script src="api.js"></script>
+<script>
+    async function loadForms() {
+      const data = await apiGetForms();
+      const tbody = document.querySelector("#formsTable tbody");
+      tbody.innerHTML = "";
+
+      data.forEach((f) => {
+        const row = `
+          <tr>
+            <td>${f.id}</td>
+            <td>${f.facultyName}</td>
+            <td>${f.subject}</td>
+            <td><span class="status ${f.status.toLowerCase()}">${f.status}</span></td>
+            <td>
+              ${f.status === "SUBMITTED"
+                ? `<button onclick="forward(${f.id})">Forward</button>`
+                : f.status === "FORWARDED"
+                ? `<button onclick="recommend(${f.id})">Recommend</button>`
+                : f.status === "RECOMMENDED"
+                ? `<button onclick="approve(${f.id}, true)">Approve</button>
+                   <button onclick="approve(${f.id}, false)">Reject</button>`
+                : "—"}
+            </td>
+          </tr>
+        `;
+        tbody.innerHTML += row;
+      });
+    }
+
+    async function forward(id) {
+      await apiForwardForm(id, "Dr. Suresh");
+      loadForms();
+    }
+
+    async function recommend(id) {
+      await apiRecommendForm(id, "Dr. Rajesh");
+      loadForms();
+    }
+
+    async function approve(id, approved) {
+      await apiApproveForm(id, "Dr. Kumar", approved);
+      loadForms();
+    }
+
+    loadForms();
+</script>
+</body>
+</html>
