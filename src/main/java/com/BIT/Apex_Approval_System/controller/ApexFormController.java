@@ -7,20 +7,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/forms")  // ✅ Add this line
-@CrossOrigin(origins = "*")    // ✅ Optional: allows frontend access
+@RequestMapping("/api/forms")
+@CrossOrigin(origins = "*")
 public class ApexFormController {
 
     private final ApexFormService service;
 
-    // ✅ Constructor injection (recommended)
+
     public ApexFormController(ApexFormService service) {
         this.service = service;
     }
-
-    // ============================================================
-    // 📌 Faculty Endpoints
-    // ============================================================
 
     @PostMapping
     public ApexForm createForm(@RequestBody ApexForm form) {
@@ -42,9 +38,7 @@ public class ApexFormController {
         return service.updateStatus(id, status);
     }
 
-    // ============================================================
-    // 📌 Forwarder / Admin Endpoints
-    // ============================================================
+
 
     @PutMapping("/{id}/forward")
     public ApexForm forwardForm(@PathVariable Long id, @RequestParam String forwarderName) {
